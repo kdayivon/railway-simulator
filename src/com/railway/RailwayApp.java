@@ -12,6 +12,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.StackPane;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.ZoomEvent;
 import javafx.stage.Stage;
 
 public class RailwayApp extends Application {
@@ -27,6 +29,19 @@ public class RailwayApp extends Application {
 
         StackPane root = new StackPane();
         root.getChildren().add(canvas);
+
+        canvas.setOnZoom((ZoomEvent event) -> {
+            canvas.setScaleX(canvas.getScaleX() * event.getZoomFactor());
+            canvas.setScaleY(canvas.getScaleY() * event.getZoomFactor());
+            event.consume();
+        });
+
+        canvas.setOnScroll((ScrollEvent event) -> {
+            double zoomFactor = event.getDeltaY() > 0 ? 1.05 : 0.95;
+            canvas.setScaleX(canvas.getScaleX() * zoomFactor);
+            canvas.setScaleY(canvas.getScaleY() * zoomFactor);
+            event.consume();
+        });
 
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setTitle("Railway Simulation");
