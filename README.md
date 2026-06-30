@@ -142,11 +142,6 @@ et les rails sont des autoroutes.
     modification nécessitait une justification poussée pour ne pas
     outrepasser les limites architecturales imposées.
 
-2.  Utilisation de l'IA pour les commentaires javadoc de
-    classes/méthodes diverses, cela sert lorsque l'on revient sur le
-    projet après un certain temps. Elle a été aussi utilisée pour aider
-    à la conception des méthodes `findShortestPath()` et `draw()`.
-
 # Bilan du projet
 
 En conclusion, la réalisation de ce simulateur déterministe démontre
